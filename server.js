@@ -13,6 +13,8 @@ app.use(expressip().getIpInfoMiddleware);
 app.set("PORT", PORT);
 
 app.get('/', function (req, res) {
+    console.log(res);
+    
     res.json({ mess: req.ipInfo });
 });
 
