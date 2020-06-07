@@ -15,7 +15,7 @@ app.set("PORT", PORT);
 app.get('/', function (req, res) {
     console.log(req.ipInfo);
     
-    res.json({ mess: req.ipInfo });
+    res.json(req.ipInfo);
 });
 
 app.listen(app.get('PORT'), function () {
