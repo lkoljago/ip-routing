@@ -4,10 +4,13 @@ const expressip = require('express-ip');
 const PORT = process.env.PORT || 7000;
 const path = require('path');
 request = require('request');
+const bodyParser = require('body-parser')
 
 var cors = require('cors')
 app.use(cors())
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false })
+)
 app.use(expressip().getIpInfoMiddleware);
 
 
