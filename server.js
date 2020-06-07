@@ -3,6 +3,7 @@ const app = express();
 const expressip = require('express-ip');
 const PORT = process.env.PORT || 7000;
 const path = require('path');
+request = require('request');
 
 var cors = require('cors')
 app.use(cors())
@@ -17,6 +18,33 @@ app.get('/', function (req, res) {
     
     res.json(req.ipInfo);
 });
+
+app.get('/location', (req, res) => {
+    request('http://ec2-18-156-172-95.eu-central-1.compute.amazonaws.com:7000/', (err, response, body) => {
+      if(err)
+        return res.status(500).send({message: err});
+     
+      return res.send(body);
+    });
+   });
+
+   app.get('/loc', (req, res) => {
+     request('localhost:7000/', (err, response, body) => {
+       if(err)
+         return res.status(500).send({message: err});
+      
+       return res.send(body);
+     });
+    });
+   
+    app.get('/local', (req, res) => {
+     request('127.0.0.1:7000/', (err, response, body) => {
+       if(err)
+         return res.status(500).send({message: err});
+      
+       return res.send(body);
+     });
+    });
 
 app.listen(app.get('PORT'), function () {
     console.log('Express started on http://localhost:' +
