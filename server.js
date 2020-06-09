@@ -41,7 +41,7 @@ app.get('/location', (req, res) => {
     });
    
    app.get('/serv', (req, res) => {
-    console.log('req.socket', req.socket);
+    console.log('req.socket', req.socket._peername);
     let ipUser = req.ipInfo.ip
     let position = ipUser.slice(2).indexOf(":") + 1
     ipUser = ipUser.slice(position + 2)
@@ -51,7 +51,7 @@ app.get('/location', (req, res) => {
         if(err)
           return res.status(500).send({message: err});
        
-        return res.send(body);
+        return res.send(body.country_code);
       });
      });
 
