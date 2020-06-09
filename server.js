@@ -47,7 +47,7 @@ app.get('/location', (req, res) => {
     ipUser = ipUser.slice(position + 2)
     console.log('req.ipInfo.ip', ipUser);
       
-      request(`http://free.ipwhois.io/json/`, (err, response, body) => {
+      request(`http://free.ipwhois.io/json/${ipUser}`, (err, response, body) => {
         console.log("1111111111111");
         let data = JSON.parse(body);
         console.log(data);
