@@ -43,11 +43,11 @@ app.get('/location', (req, res) => {
    app.get('/serv', (req, res) => {
     console.log('req.socket', req.socket);
     let ipUser = req.ipInfo.ip
-    let position = ipUser.slice(2).indexOf(":")
+    let position = ipUser.slice(2).indexOf(":") + 1
     ipUser = ipUser.slice(position + 2)
     console.log('req.ipInfo.ip', ipUser);
       
-      request('http://free.ipwhois.io/json/', (err, response, body) => {
+      request(`http://free.ipwhois.io/json/${ipUser}`, (err, response, body) => {
         if(err)
           return res.status(500).send({message: err});
        
