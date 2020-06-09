@@ -40,19 +40,11 @@ app.get('/location', (req, res) => {
      });
     });
    
-    app.get('/local', (req, res) => {
-     request('http://free.ipwhois.io/json/', (err, response, body) => {
-       if(err)
-         return res.status(500).send({message: err});
+   app.get('/serv', (req, res) => {
+    console.log('req.socket', req.socket);
+    console.log('req.ipInfo.ip', req.ipInfo.ip);
       
-       return res.send(body);
-     });
-    });
-
-    app.get('/serv', (req, res) => {
-      console.log(req);
-      
-      request('127.0.0.1:7000/', (err, response, body) => {
+      request('http://free.ipwhois.io/json/', (err, response, body) => {
         if(err)
           return res.status(500).send({message: err});
        
