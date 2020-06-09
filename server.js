@@ -42,7 +42,9 @@ app.get('/location', (req, res) => {
    
    app.get('/serv', (req, res) => {
     console.log('req.socket', req.socket);
-    console.log('req.ipInfo.ip', req.ipInfo.ip);
+    let ipUser = req.ipInfo.ip
+    ipUser = ipUser.slice(2)
+    console.log('req.ipInfo.ip', ipUser);
       
       request('http://free.ipwhois.io/json/', (err, response, body) => {
         if(err)
