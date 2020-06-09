@@ -49,6 +49,7 @@ app.get('/location', (req, res) => {
       
       request(`http://free.ipwhois.io/json/${ipUser}`, (err, response, body) => {
         console.log("1111111111111");
+        console.log(body);
         
         if(err)
           return res.status(500).send({message: err});
