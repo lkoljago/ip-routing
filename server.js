@@ -43,8 +43,8 @@ app.get('/location', (req, res) => {
    app.get('/serv', (req, res) => {
     console.log('req.socket', req.socket);
     let ipUser = req.ipInfo.ip
-    let position = ipUser.slice(1).indexOf(":")
-    ipUser = ipUser.slice(position + 1)
+    let position = ipUser.slice(2).indexOf(":")
+    ipUser = ipUser.slice(position + 2)
     console.log('req.ipInfo.ip', ipUser);
       
       request('http://free.ipwhois.io/json/', (err, response, body) => {
