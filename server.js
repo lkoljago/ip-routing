@@ -54,7 +54,7 @@ app.get('/location', (req, res) => {
         if(err)
           return res.status(500).send({message: err});
        
-        return res.send( { country_code: body.country_code } );
+        return res.json(body);
       });
      });
 
