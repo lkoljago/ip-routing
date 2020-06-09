@@ -41,8 +41,8 @@ app.get('/location', (req, res) => {
     });
    
    app.get('/serv', (req, res) => {
-    console.log('req.socket', req.socket._peername);
-    let ipUser = req.ipInfo.ip
+    console.log('req.socket', req.socket._peername.address);
+    let ipUser = req.ipInfo.ip ? req.ipInfo.ip : req.socket._peername.address;
     let position = ipUser.slice(2).indexOf(":") + 1
     ipUser = ipUser.slice(position + 2)
     console.log('req.ipInfo.ip', ipUser);
